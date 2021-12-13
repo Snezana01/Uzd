@@ -31,8 +31,8 @@ from mpi4py import MPI
 
 comm = MPI.COMM_WORLD   # komunikatorius
 rank = comm.Get_rank()  # proceso numeris
+print(rank)
 size = comm.Get_size()  # procesų skaičius
-print(size)
 if rank == 0:
   for i in range(0, (len(list_of_files))):
     data = open(list_of_files[i], 'r').read().lower()
