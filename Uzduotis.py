@@ -29,10 +29,9 @@ def count_word(origin):
 
 from mpi4py import MPI
 
-comm = MPI.COMM_WORLD   # komunikatorius
-rank = comm.Get_rank()  # proceso numeris
-print(rank)
-size = comm.Get_size()  # procesų skaičius
+comm = MPI.COMM_WORLD   
+rank = comm.Get_rank() 
+size = comm.Get_size()
 #size = int(os.environ['SLURM_CPUS_ON_NODE'])
 if rank == 0:
   for i in range(1, size):
