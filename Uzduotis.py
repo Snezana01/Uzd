@@ -6,6 +6,7 @@
 from collections import Counter
 import re
 import os
+import sys
 list_of_files = ["text1.txt","text2.txt","text3.txt", "text4.txt"]
 symbols = [',','\n','\t','\'','.','\"','!','?','-', '~']
 basic = ["an", "a", "the", "as", "above", "across", "after", "at", "around", "before",
@@ -35,7 +36,7 @@ size = comm.Get_size()
 #size = int(os.environ['SLURM_CPUS_ON_NODE'])
 if rank == 0:
   for i in range(1, size):
-    data = open(list_of_files[i-1], 'r').read().lower()
+    data = open(sys.argv[i], 'r').read().lower()
     comm.send(data, dest= i, tag = i)
     print("Procesui" + str(i) +"nusiusti failo" + str(list_of_files[i-1]) + "duomenys")
 else:
