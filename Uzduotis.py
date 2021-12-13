@@ -28,7 +28,6 @@ def count_word(origin):
   return(sortt[:10])
 
 from mpi4py import MPI
-import os
 
 comm = MPI.COMM_WORLD   # komunikatorius
 rank = comm.Get_rank()  # proceso numeris
