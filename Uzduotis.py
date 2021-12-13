@@ -6,7 +6,7 @@
 from collections import Counter
 import re
 import os
-list_of_files = ["text1.txt","text2.txt","text3.txt", "text4.txt", "text5.txt"]
+list_of_files = ["text1.txt","text2.txt","text3.txt", "text4.txt"]
 symbols = [',','\n','\t','\'','.','\"','!','?','-', '~']
 basic = ["an", "a", "the", "as", "above", "across", "after", "at", "around", "before",
          "behind","below", "beside", "between", "by", "down", "during", "for", "from",
