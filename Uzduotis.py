@@ -34,7 +34,7 @@ rank = comm.Get_rank()  # proceso numeris
 size = comm.Get_size()  # procesų skaičius
 print(size)
 if rank == 0:
-  for i in range(0, (len(list_of_files)-1)):
+  for i in range(0, (len(list_of_files))):
     data = open(list_of_files[i], 'r').read().lower()
     comm.send(data, dest= (i+1), tag = (i+1))
     print("Procesui" + str(i+1) +"nusiusti failo" + str(list_of_files[i]) + "duomenys")
