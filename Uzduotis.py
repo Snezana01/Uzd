@@ -36,7 +36,7 @@ size = comm.Get_size()
 #size = int(os.environ['SLURM_CPUS_ON_NODE'])
 if rank == 0:
   for i in range(1, size):
-    data = open(sys.argv[i], 'r').read().lower()
+    with open(sys.argv[1]) as file: data = open(file, 'r').read().lower()
     comm.send(data, dest= i, tag = i)
     print("Procesui" + str(i) +"nusiusti failo" + str(list_of_files[i-1]) + "duomenys")
 else:
