@@ -31,8 +31,8 @@ from mpi4py import MPI
 
 comm = MPI.COMM_WORLD   
 rank = comm.Get_rank() 
-size = comm.Get_size()
-#size = int(os.environ['SLURM_CPUS_ON_NODE'])
+#size = comm.Get_size()
+size = int(os.environ['SLURM_CPUS_ON_NODE'])
 if rank == 0:
   for i in range(1, size):
     data = open(list_of_files[i-1], 'r').read().lower()
