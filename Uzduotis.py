@@ -32,13 +32,13 @@ from mpi4py import MPI
 comm = MPI.COMM_WORLD   # komunikatorius
 rank = comm.Get_rank()  # proceso numeris
 print(rank)
-#size = comm.Get_size()  # procesų skaičius
-size = int(os.environ['SLURM_CPUS_ON_NODE'])
+size = comm.Get_size()  # procesų skaičius
+#size = int(os.environ['SLURM_CPUS_ON_NODE'])
 if rank == 0:
-  for i in range(0, (len(list_of_files))):
-    data = open(list_of_files[i], 'r').read().lower()
-    comm.send(data, dest= (i+1), tag = (i+1))
-    print("Procesui" + str(i+1) +"nusiusti failo" + str(list_of_files[i]) + "duomenys")
+  for i in range(1, size):
+    data = open(list_of_files[i-1], 'r').read().lower()
+    comm.send(data, dest= i, tag = i)
+    print("Procesui" + str(i) +"nusiusti failo" + str(list_of_files[i-1]) + "duomenys")
 else:
   data = comm.recv(source=0, tag=rank)
   print("Proceso" + str(rank) + "skaiciavimai:")
